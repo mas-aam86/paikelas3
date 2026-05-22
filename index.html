@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petualangan PAI Kelas 4 - Belajar & Bermain</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: radial-gradient(circle, #fef3c7 0%, #fef08a 100%);
+        }
+        .font-fredoka {
+            font-family: 'Fredoka', sans-serif;
+        }
+        .bubble-btn:active {
+            transform: scale(0.95);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fef08a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #f59e0b;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between text-slate-800 selection:bg-amber-300 selection:text-amber-900">
+
+    <!-- Header / Navigasi Utama -->
+    <header class="bg-gradient-to-r from-teal-400 via-emerald-400 to-amber-400 p-4 shadow-lg sticky top-0 z-50 rounded-b-3xl">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+            <div class="flex items-center gap-3">
+                <div class="bg-white p-2 rounded-full shadow-inner animate-bounce">
+                    <svg class="w-10 h-10 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-2xl sm:text-3xl font-fredoka font-bold text-white tracking-wide drop-shadow-md">Petualangan PAI Kelas 4</h1>
+                    <p class="text-xs sm:text-sm text-emerald-950 font-medium">Cerdas, Berakhlak Mulia, & Ceria ✨</p>
+                </div>
+            </div>
+            <div class="flex gap-2 mt-2 sm:mt-0">
+                <button onclick="switchTab('materi')" id="btn-materi" class="bg-white text-emerald-600 font-bold px-4 py-2 rounded-full shadow-md hover:bg-emerald-50 transition-all flex items-center gap-1 text-sm border-2 border-emerald-500">
+                    <i data-lucide="book-open" class="w-4 h-4"></i> Belajar Materi
+                </button>
+                <button onclick="switchTab('game')" id="btn-game" class="bg-amber-500 text-white font-bold px-4 py-2 rounded-full shadow-md hover:bg-amber-600 transition-all flex items-center gap-1 text-sm border-2 border-amber-300">
+                    <i data-lucide="gamepad-2" class="w-4 h-4"></i> Game Evaluasi
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Konten Utama -->
+    <main class="max-w-6xl mx-auto p-4 w-full flex-grow">
+        
+        <!-- ================= SECTION BELAJAR MATERI ================= -->
+        <section id="section-materi" class="space-y-6">
+            <!-- Pengantar Indah -->
+            <div class="bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400 rounded-3xl p-6 text-white shadow-xl relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 opacity-20 transform rotate-12">
+                    <svg class="w-64 h-64 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2z"/></svg>
+                </div>
+                <h2 class="text-2xl sm:text-3xl font-fredoka font-bold mb-2">Halo Sahabat Muslim Cilik! 👋</h2>
+                <p class="text-sm sm:text-base max-w-2xl font-medium leading-relaxed">
+                    Ayo kita petualang menjelajahi 5 gerbang ilmu yang luar biasa ini. Di setiap bab, kamu akan menemukan gambar yang seru, tuntunan amal harian, dan petunjuk langkah demi langkah agar kamu bisa mengamalkannya dalam kehidupan sehari-hari dengan ceria!
+                </p>
+            </div>
+
+            <!-- Tab Menu Bab -->
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-2">
+                <button onclick="showBab(1)" id="bab-tab-1" class="bab-tab-btn active p-3 rounded-2xl font-fredoka font-bold text-xs sm:text-sm text-center shadow-md bg-rose-400 text-white transition-all transform hover:-translate-y-1">
+                    📖 Bab 1: Hadis Salat Berjemaah
+                </button>
+                <button onclick="showBab(2)" id="bab-tab-2" class="bab-tab-btn p-3 rounded-2xl font-fredoka font-bold text-xs sm:text-sm text-center shadow-md bg-sky-200 text-sky-800 hover:bg-sky-300 transition-all transform hover:-translate-y-1">
+                    📚 Bab 2: Kitab-kitab Allah
+                </button>
+                <button onclick="showBab(3)" id="bab-tab-3" class="bab-tab-btn p-3 rounded-2xl font-fredoka font-bold text-xs sm:text-sm text-center shadow-md bg-emerald-200 text-emerald-800 hover:bg-emerald-300 transition-all transform hover:-translate-y-1">
+                    🗣️ Bab 3: Kalimat Toyyibah
+                </button>
+                <button onclick="showBab(4)" id="bab-tab-4" class="bab-tab-btn p-3 rounded-2xl font-fredoka font-bold text-xs sm:text-sm text-center shadow-md bg-amber-200 text-amber-800 hover:bg-amber-300 transition-all transform hover:-translate-y-1">
+                    🕌 Bab 4: Salat Sunah Rawatib
+                </button>
+                <button onclick="showBab(5)" id="bab-tab-5" class="bab-tab-btn col-span-2 md:col-span-1 p-3 rounded-2xl font-fredoka font-bold text-xs sm:text-sm text-center shadow-md bg-purple-200 text-purple-800 hover:bg-purple-300 transition-all transform hover:-translate-y-1">
+                    ⭐ Bab 5: Kisah & Mukjizat Rasul
+                </button>
+            </div>
+
+            <!-- Detail Bab Container -->
+            <div class="bg-white rounded-3xl p-6 shadow-xl border-4 border-yellow-200 min-h-[400px]">
+                
+                <!-- BAB 1 -->
+                <div id="bab-content-1" class="bab-content space-y-6">
+                    <div class="flex items-center gap-3 border-b-4 border-dashed border-rose-200 pb-3">
+                        <span class="text-4xl">📖</span>
+                        <div>
+                            <h3 class="text-xl sm:text-2xl font-fredoka font-bold text-rose-600">Bab 1: Membaca, Menulis, & Mengamalkan Hadis Salat Berjemaah</h3>
+                            <p class="text-xs sm:text-sm text-slate-500 font-semibold">Salat bersama-sama lebih banyak pahalanya!</p>
+                        </div>
+                    </div>
+
+                    <!-- Representasi Visual -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                        <div class="bg-rose-50 p-4 rounded-2xl border-2 border-rose-200 flex flex-col items-center justify-center text-center">
+                            <!-- SVG Ilustrasi Jemaah -->
+                            <svg class="w-full max-w-[280px] h-auto text-rose-500" viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Imam -->
+                                <circle cx="50" cy="40" r="15" fill="#f43f5e"/>
+                                <path d="M35 70 C35 55, 65 55, 65 70 L65 100 L35 100 Z" fill="#e11d48"/>
+                                <rect x="42" y="32" width="16" height="5" rx="2.5" fill="#ffffff"/>
+                                <!-- Makmum 1 -->
+                                <circle cx="110" cy="50" r="12" fill="#fda4af"/>
+                                <path d="M98 74 C98 62, 122 62, 122 74 L122 100 L98 100 Z" fill="#fb7185"/>
+                                <!-- Makmum 2 -->
+                                <circle cx="150" cy="50" r="12" fill="#fda4af"/>
+                                <path d="M138 74 C138 62, 162 62, 162 74 L162 100 L138 100 Z" fill="#fb7185"/>
+                                <!-- Sajadah/Garis Saf -->
+                                <line x1="20" y1="102" x2="180" y2="102" stroke="#fda4af" stroke-width="4" stroke-linecap="round"/>
+                                <text x="50" y="115" fill="#e11d48" font-size="8" font-family="sans-serif" text-anchor="middle" font-weight="bold">IMAM (Depan)</text>
+                                <text x="130" y="115" fill="#fb7185" font-size="8" font-family="sans-serif" text-anchor="middle" font-weight="bold">MAKMUM (Belakang & Rapat)</text>
+                            </svg>
+                            <p class="text-xs text-rose-700 font-bold mt-2">"Salat berjemaah melipatgandakan pahala hingga 27 derajat dibandingkan salat sendirian."</p>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <h4 class="font-fredoka font-bold text-rose-700 text-lg">Mari Membaca & Menulis Hadisnya:</h4>
+                            <div class="bg-amber-50 p-4 rounded-xl border border-amber-200 text-right">
+                                <p class="text-xl sm:text-2xl font-serif text-slate-800 font-bold leading-loose" dir="rtl">صَلَاةُ الْجَمَاعَةِ تَفْضُلُ صَلَاةَ الْفَذِّ بِسَبْعٍ وَعِشْرِينَ دَرَجَةً</p>
+                                <p class="text-left text-xs sm:text-sm text-slate-600 mt-2 italic font-sans">"Shalaatul jamaa'ati tafdhulu shalaatal faddzi bisab'in wa 'isyriina darajah."</p>
+                                <p class="text-left text-xs sm:text-sm text-rose-900 font-semibold mt-1">Artinya: "Salat berjemaah lebih utama dibanding salat sendirian dengan dua puluh tujuh derajat." (HR. Bukhari dan Muslim)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Langkah Pemrosesan -->
+                    <div class="bg-gradient-to-r from-rose-100 to-amber-100 p-5 rounded-2xl">
+                        <h4 class="font-fredoka font-bold text-rose-800 mb-3 flex items-center gap-2">
+                            <i data-lucide="compass"></i> Langkah Mengamalkan dalam Sehari-hari:
+                        </h4>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
+                            <div class="bg-white p-3 rounded-xl shadow-sm">
+                                <span class="bg-rose-500 text-white w-6 h-6 rounded-full inline-flex items-center justify-center font-bold mr-2">1</span>
+                                <span class="font-semibold text-slate-700">Dengar Azan langsung bersiap mengambil wudu dengan tertib.</span>
+                            </div>
+                            <div class="bg-white p-3 rounded-xl shadow-sm">
+                                <span class="bg-rose-500 text-white w-6 h-6 rounded-full inline-flex items-center justify-center font-bold mr-2">2</span>
+                                <span class="font-semibold text-slate-700">Pergi ke Masjid/Musala terdekat (atau bersama keluarga di rumah).</span>
+                            </div>
+                            <div class="bg-white p-3 rounded-xl shadow-sm">
+                                <span class="bg-rose-500 text-white w-6 h-6 rounded-full inline-flex items-center justify-center font-bold mr-2">3</span>
+                                <span class="font-semibold text-slate-700">Merapatkan saf (barisan) dan ikuti gerakan Imam dengan khusyuk.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BAB 2 -->
+                <div id="bab-content-2" class="bab-content space-y-6 hidden">
+                    <div class="flex items-center gap-3 border-b-4 border-dashed border-sky-200 pb-3">
+                        <span class="text-4xl">📚</span>
+                        <div>
+                            <h3 class="text-xl sm:text-2xl font-fredoka font-bold text-sky-600">Bab 2: Beriman Kepada Kitab-kitab Allah SWT</h3>
+                            <p class="text-xs sm:text-sm text-slate-500 font-semibold">Mengenal panduan hidup mulia dari Allah SWT</p>
+                        </div>
+                    </div>
+
+                    <!-- Representasi Visual -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="bg-sky-50 p-3 rounded-xl border border-sky-200 text-center">
+                                <span class="text-2xl">⚡</span>
+                                <h5 class="font-bold text-sky-800">Taurat</h5>
+                                <p class="text-xs text-slate-600">Nabi Musa AS</p>
+                            </div>
+                            <div class="bg-indigo-50 p-3 rounded-xl border border-indigo-200 text-center">
+                                <span class="text-2xl">🎵</span>
+                                <h5 class="font-bold text-indigo-800">Zabur</h5>
+                                <p class="text-xs text-slate-600">Nabi Dawud AS</p>
+                            </div>
+                            <div class="bg-blue-50 p-3 rounded-xl border border-blue-200 text-center">
+                                <span class="text-2xl">🕊️</span>
+                                <h5 class="font-bold text-blue-800">Injil</h5>
+                                <p class="text-xs text-slate-600">Nabi Isa AS</p>
+                            </div>
+                            <div class="bg-emerald-50 p-3 rounded-xl border border-emerald-200 text-center">
+                                <span class="text-2xl">📖</span>
+                                <h5 class="font-bold text-emerald-800">Al-Qur'an</h5>
+                                <p class="text-xs text-slate-600">Nabi Muhammad SAW</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <h4 class="font-fredoka font-bold text-sky-700 text-lg">Makna Beriman pada Kitab Allah:</h4>
+                            <p class="text-sm text-slate-700 leading-relaxed">
+                                Beriman kepada kitab Allah berarti meyakini dengan sepenuh hati bahwa Allah telah menurunkan wahyu berupa kitab suci kepada para utusan-Nya sebagai petunjuk jalan yang benar bagi manusia. 
+                            </p>
+                            <div class="bg-sky-50 p-3 rounded-xl border-l-4 border-sky-500 text-xs text-sky-900 font-semibold">
+                                "Al-Qur'an adalah kitab suci penutup yang menyempurnakan ajaran kitab-kitab sebelumnya."
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Langkah Pemrosesan -->
+                    <div class="bg-gradient-to-r from-sky-100 to-indigo-100 p-5 rounded-2xl">
+                        <h4 class="font-fredoka font-bold text-sky-800 mb-3 flex items-center gap-2">
+                            <i data-lucide="compass"></i> Langkah Mengaplikasikan dalam Sehari-hari:
+                        </h4>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
+                            <div class="bg-white p-3 rounded-xl shadow-sm">
+                                <span class="bg-sky-500 text-white w-6 h-6 rounded-full inline-flex items-center justify-center font-bold mr-2">1</span>
+                                <span class="font-semibold text-slate-700">Rutin membaca Al-Qur'an (atau Iqra) setiap hari setelah salat Magrib.</span>
+                            </div>
+                            <div class="bg-white p-3 rounded-xl shadow-sm">
+                                <span class="bg-sky-500 text-white w-6 h-6 rounded-full inline-flex items-center justify-center font-bold mr-2">2</span>
+                                <span class="font-semibold text-slate-700">Berusaha mempelajari dan memahami arti dari ayat yang dibaca.</span>
+                            </div>
+                            <div class="bg-white p-3 rounded-xl shadow-sm">
+                                <span class="bg-sky-500 text-white w-6 h-6 rounded-full inline-flex items-center justify-center font-bold mr-2">3</span>
+                                <span class="font-semibold text-slate-700">Mengamalkan akhlak terpuji di dalamnya, seperti jujur dan sayang keluarga.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BAB 3 -->
+                <div id="bab-content-3" class="bab-content space-y-6 hidden">
+                    <div class="flex items-center gap-3 border-b-4 border-dashed border-emerald-200 pb-3">
+                        <span class="text-4xl">🗣️</span>
+                        <div>
+                            <h3 class="text-xl sm:text-2xl font-fredoka font-bold text-emerald-600">Bab 3: Memaknai & Mengamalkan Kalimat Toyyibah</h3>
+                            <p class="text-xs sm:text-sm text-slate-500 font-semibold">Hiasi lisan kita dengan ucapan-ucapan yang indah disukai Allah</p>
+                        </div>
+                    </div>
+
+                    <!-- Representasi Visual -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-3">
+                            <div class="bg-rose-50 p-3 rounded-xl border-l-4 border-rose-500">
+                                <h5 class="font-bold text-rose-800">1. Subhanallah (Maha Suci Allah)</h5>
+                                <p class="text-xs text-slate-600 mt-1">Diyanyikan ketika melihat hal yang mengherankan, buruk, atau mensucikan Allah.</p>
+                            </div>
+                            <div class="bg-emerald-50 p-3 rounded-xl border-l-4 border-emerald-500">
+                                <h5 class="font-bold text-emerald-800">2. Masya Allah (Atas Kehendak Allah)</h5>
+                                <p class="text-xs text-slate-600 mt-1">Diucapkan ketika melihat sesuatu yang indah, menakjubkan, atau mengagumkan.</p>
+                            </div>
+                            <div class="bg-amber-50 p-3 rounded-xl border-l-4 border-amber-500">
+                                <h5 class="font-bold text-amber-800">3. Insya Allah (Jika Allah Menghendaki)</h5>
+                                <p class="text-xs text-slate-600 mt-1">Diucapkan ketika kita berjanji untuk melakukan sesuatu di masa depan.</p>
+                            </div>
+                            <div class="bg-indigo-50 p-3 rounded-xl border-l-4 border-indigo-500">
+                                <h5 class="font-bold text-indigo-800">4. Allahu Akbar (Allah Maha Besar)</h5>
+                                <p class="text-xs text-slate-600 mt-1">Diucapkan ketika takbir salat, mengagumi kebesaran Allah, atau mendengar petir.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-emerald-50 p-4 rounded-2xl border-2 border-emerald-200 flex flex-col justify-center items-center text-center">
+                            <!-- SVG Pohon Kalimat Toyyibah -->
+                            <svg class="w-full max-w-[200px] h-auto" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M47 90 L47 60 L53 60 L53 90 Z" fill="#854d0e"/>
+                                <circle cx="50" cy="45" r="25" fill="#22c55e" opacity="0.8"/>
+                                <circle cx="35" cy="40" r="18" fill="#15803d" opacity="0.9"/>
+                                <circle cx="65" cy="40" r="18" fill="#166534" opacity="0.9"/>
+                                <!-- Daun tulisan -->
+                                <rect x="35" y="30" width="30" height="10" rx="5" fill="#fef08a" />
+                                <text x="50" y="37" fill="#854d0e" font-size="5" font-family="sans-serif" text-anchor="middle" font-weight="bold">Toyyibah</text>
+                            </svg>
+                            <p class="text-xs text-emerald-800 font-bold mt-3">Lisan yang basah dengan zikir seperti pohon rindang yang berbuah manis pahala!</p>
+                        </div>
+                    </div>
+
+                    <!-- Langkah Pemrosesan -->
+                    <div class="bg-gradient-to-r from-emerald-100 to-teal-100 p-5 rounded-2xl">
+                        <h4 class="font-fredoka font-bold text-emerald-800 mb-3 flex items-center gap-2">
+                            <i data-lucide="compass"></i> Langkah Membiasakan Diri dalam Sehari-hari:
+                        </h4>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
+                            <div class="bg-white p-3 rounded-xl shadow-sm">
+                                <span class="bg-emerald-500 text-white w-6 h-6 rounded-full inline-flex items-center justify-center font-bold mr-2">1</span>
+                                <span class="font-semibold text-slate-700">Gunakan "Insya Allah" saat berjanji kepada teman atau guru.</span>
+                            </div>
+                            <div class="bg-white p-3 rounded-xl shadow-sm">
+                                <span class="bg-emerald-500 text-white w-6 h-6 rounded-full inline-flex items-center justify-center font-bold mr-2">2</span>
+                                <span class="font-semibold text-slate-700">Ucapkan "Masya Allah" ketika melihat pemandangan indah atau nilai bagus.</span>
+                            </div>
+                            <div class="bg-white p-3 rounded-xl shadow-sm">
+                                <span class="bg-emerald-500 text-white w-6 h-6 rounded-full inline-flex items-center justify-center font-bold mr-2">3</span>
+                                <span class="font-semibold text-slate-700">Hindari kata-kata kotor atau ejekan, ganti dengan zikir yang menenangkan hati.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BAB 4 -->
+                <div id="bab-content-4" class="bab-content space-y-6 hidden">
+                    <div class="flex items-center gap-3 border-b-4 border-dashed border-amber-200 pb-3">
+                        <span class="text-4xl">🕌</span>
+                        <div>
+                            <h3 class="text-xl sm:text-2xl font-fredoka font-bold text-amber-600">Bab 4: Tata Cara Salat Sunah Rawatib</h3>
+                            <p class="text-xs sm:text-sm text-slate-500 font-semibold">Salat ekstra penyempurna ibadah fardu kita</p>
+                        </div>
+                    </div>
+
+                    <!-- Representasi Visual -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                        <div class="bg-amber-50 p-4 rounded-2xl border-2 border-amber-200">
+                            <h4 class="font-fredoka font-bold text-amber-800 mb-3 text-center">Berdasarkan Hukum Pelaksanaan</h4>
+                            <div class="grid grid-cols-2 gap-3 text-xs">
+                                <div class="bg-emerald-100 p-3 rounded-xl text-center">
+                                    <h5 class="font-bold text-emerald-800">Rawatib Mu'akkad</h5>
+                                    <p class="text-slate-600 mt-1">(Sangat Dianjurkan)</p>
+                                    <ul class="text-left list-disc list-inside mt-2 text-[11px] text-slate-700 font-semibold">
+                                        <li>2 Rakaat sebelum Subuh</li>
+                                        <li>2/4 Rakaat sebelum Zuhur</li>
+                                        <li>2 Rakaat sesudah Zuhur</li>
+                                        <li>2 Rakaat sesudah Magrib</li>
+                                        <li>2 Rakaat sesudah Isya</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-amber-100 p-3 rounded-xl text-center">
+                                    <h5 class="font-bold text-amber-800">Ghairu Mu'akkad</h5>
+                                    <p class="text-slate-600 mt-1">(Kurang Dianjurkan)</p>
+                                    <ul class="text-left list-disc list-inside mt-2 text-[11px] text-slate-700 font-semibold">
+                                        <li>4 Rakaat sebelum Asar</li>
+                                        <li>2 Rakaat sebelum Magrib</li>
+                                        <li>2 Rakaat sebelum Isya</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <h4 class="font-fredoka font-bold text-amber-700 text-lg">Keutamaan Menakjubkan:</h4>
+                            <p class="text-sm text-slate-700 leading-relaxed">
+                                Salat Sunah Rawatib adalah salat sunah yang mengiringi salat fardu (wajib). 
+                                <strong>Qabliyyah</strong> dikerjakan <em>sebelum</em> salat fardu, sedangkan <strong>Ba'diyyah</strong> dikerjakan <em>sesudah</em> salat fardu.
+                            </p>
+                            <div class="bg-yellow-100 p-3 rounded-xl text-xs text-yellow-950 font-bold">
+                                "Siapa yang salat 12 rakaat sehari semalam (salat sunah), maka Allah akan membangunkan rumah baginya di surga." (HR. Muslim)
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Langkah Pemrosesan -->
+                    <div class="bg-gradient-to-r from-amber-100 to-yellow-100 p-5 rounded-2xl">
+                        <h4 class="font-fredoka font-bold text-amber-800 mb-3 flex items-center gap-2">
+                            <i data-lucide="compass"></i> Langkah Memulai Salat Sunah Rawatib:
+                        </h4>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
+                            <div class="bg-white p-3 rounded-xl shadow-sm">
+                                <span class="bg-amber-500 text-white w-6 h-6 rounded-full inline-flex items-center justify-center font-bold mr-2">1</span>
+                                <span class="font-semibold text-slate-700">Mulai dengan melatih 2 rakaat sebelum Salat Subuh (pahalanya lebih baik dari dunia & isinya!).</span>
+                            </div>
+                            <div class="bg-white p-3 rounded-xl shadow-sm">
+                                <span class="bg-amber-500 text-white w-6 h-6 rounded-full inline-flex items-center justify-center font-bold mr-2">2</span>
+                                <span class="font-semibold text-slate-700">Niatkan dalam hati secara tulus untuk berbakti dan menambah bekal pahala.</span>
+                            </div>
+                            <div class="bg-white p-3 rounded-xl shadow-sm">
+                                <span class="bg-amber-500 text-white w-6 h-6 rounded-full inline-flex items-center justify-center font-bold mr-2">3</span>
+                                <span class="font-semibold text-slate-700">Lakukan salat secara munfarid (sendirian) dan diringankan (tidak terlalu lama).</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BAB 5 -->
+                <div id="bab-content-5" class="bab-content space-y-6 hidden">
+                    <div class="flex items-center gap-3 border-b-4 border-dashed border-purple-200 pb-3">
+                        <span class="text-4xl">⭐</span>
+                        <div>
+                            <h3 class="text-xl sm:text-2xl font-fredoka font-bold text-purple-600">Bab 5: Kisah Nabi Muhammad SAW Menjadi Rasul & Mukjizatnya</h3>
+                            <p class="text-xs sm:text-sm text-slate-500 font-semibold">Meneladani manusia paling mulia pelita alam semesta</p>
+                        </div>
+                    </div>
+
+                    <!-- Representasi Visual -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                        <div class="space-y-3">
+                            <div class="bg-purple-50 p-3 rounded-xl border border-purple-200">
+                                <h5 class="font-bold text-purple-800 flex items-center gap-1">🏔️ Pengangkatan Menjadi Rasul</h5>
+                                <p class="text-xs text-slate-600 mt-1">Nabi Muhammad menerima wahyu pertama (QS. Al-Alaq 1-5) di Gua Hira lewat Malaikat Jibril pada usia 40 tahun.</p>
+                            </div>
+                            <div class="bg-pink-50 p-3 rounded-xl border border-pink-200">
+                                <h5 class="font-bold text-pink-800 flex items-center gap-1">🌟 Mukjizat-Mukjizat Agung</h5>
+                                <ul class="list-disc list-inside text-xs text-slate-600 mt-1 space-y-1">
+                                    <li><strong>Al-Qur'anul Karim:</strong> Mukjizat terbesar sepanjang masa.</li>
+                                    <li><strong>Isra Mikraj:</strong> Perjalanan luar biasa menjemput perintah Salat.</li>
+                                    <li><strong>Membelah Bulan:</strong> Membuktikan kenabiannya di depan kafir Quraisy.</li>
+                                    <li><strong>Air Memancar dari Jari-Jemari:</strong> Membantu sahabat berwudu di masa paceklik.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="bg-purple-100 p-4 rounded-2xl border-2 border-purple-300 text-center">
+                            <!-- SVG Bulan Terbelah & Alquran -->
+                            <svg class="w-full max-w-[200px] h-auto mx-auto" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Bulan Belah -->
+                                <path d="M25 40 A20 20 0 0 1 45 20 A20 20 0 0 0 35 40 Z" fill="#e9d5ff" />
+                                <path d="M55 20 A20 20 0 0 1 75 40 A20 20 0 0 0 65 20 Z" fill="#e9d5ff" />
+                                <!-- Alquran Kebuka -->
+                                <path d="M20 70 Q50 65 50 80 Q50 65 80 70 L80 60 Q50 55 50 70 Q50 55 20 60 Z" fill="#c084fc" />
+                                <text x="50" y="50" fill="#6b21a8" font-size="6" font-family="sans-serif" text-anchor="middle" font-weight="bold">MUKJIZAT DAHSYAT</text>
+                            </svg>
+                            <p class="text-xs text-purple-800 font-bold mt-2">Mukjizat diberikan Allah sebagai bukti kerasulan dan pelindung dakwah Beliau.</p>
+                        </div>
+                    </div>
+
+                    <!-- Langkah Pemrosesan -->
+                    <div class="bg-gradient-to-r from-purple-100 to-pink-100 p-5 rounded-2xl">
+                        <h4 class="font-fredoka font-bold text-purple-800 mb-3 flex items-center gap-2">
+                            <i data-lucide="compass"></i> Langkah Meneladani Rasulullah dalam Sehari-hari:
+                        </h4>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
+                            <div class="bg-white p-3 rounded-xl shadow-sm">
+                                <span class="bg-purple-500 text-white w-6 h-6 rounded-full inline-flex items-center justify-center font-bold mr-2">1</span>
+                                <span class="font-semibold text-slate-700">Membaca selawat kepada Nabi Muhammad SAW setiap kali mendengar nama Beliau.</span>
+                            </div>
+                            <div class="bg-white p-3 rounded-xl shadow-sm">
+                                <span class="bg-purple-500 text-white w-6 h-6 rounded-full inline-flex items-center justify-center font-bold mr-2">2</span>
+                                <span class="font-semibold text-slate-700">Mencontoh sifat jujur (Siddiq), dapat dipercaya (Amanah) di sekolah.</span>
+                            </div>
+                            <div class="bg-white p-3 rounded-xl shadow-sm">
+                                <span class="bg-purple-500 text-white w-6 h-6 rounded-full inline-flex items-center justify-center font-bold mr-2">3</span>
+                                <span class="font-semibold text-slate-700">Menyayangi anak yatim, bersikap ramah, pemaaf, dan murah senyum kepada siapapun.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ================= SECTION GAME EVALUASI ================= -->
+        <section id="section-game" class="space-y-6 hidden">
+            
+            <!-- Layar Mulai Game -->
+            <div id="game-start-screen" class="bg-white rounded-3xl p-6 sm:p-10 shadow-xl border-4 border-amber-300 text-center max-w-2xl mx-auto space-y-6">
+                <span class="text-6xl animate-bounce inline-block">🏆</span>
+                <h2 class="text-3xl font-fredoka font-bold text-amber-600">Kuis Pintar PAI Kelas 4</h2>
+                <p class="text-sm sm:text-base text-slate-600 font-medium">
+                    Asah pemahamanmu tentang Bab 1 hingga Bab 5 lewat tantangan menarik ini! Selesaikan <strong>30 soal seru</strong> ini dan kumpulkan lencana bintangmu! 🌟
+                </p>
+                
+                <div class="bg-amber-50 p-4 rounded-2xl border border-amber-200 text-left space-y-2 text-xs sm:text-sm text-amber-900 font-medium">
+                    <p class="font-bold text-amber-800 flex items-center gap-1">📋 Petunjuk Main:</p>
+                    <p>✨ Ada 30 pertanyaan pilihan ganda acak dari semua bab.</p>
+                    <p>✨ Jawablah dengan benar untuk mengumpulkan skor terbaik.</p>
+                    <p>✨ Dapat lencana emas jika skor kamu mencapai 80 atau lebih!</p>
+                </div>
+
+                <button onclick="startGame()" class="bubble-btn bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-600 hover:to-yellow-500 text-white font-fredoka font-bold text-lg py-3 px-8 rounded-full shadow-lg transition-transform transform hover:scale-105 inline-flex items-center gap-2">
+                    <i data-lucide="play" class="w-5 h-5"></i> Mulai Petualangan!
+                </button>
+            </div>
+
+            <!-- Layar Bermain Kuis -->
+            <div id="game-play-screen" class="hidden bg-white rounded-3xl p-5 sm:p-8 shadow-xl border-4 border-indigo-200 space-y-6">
+                
+                <!-- Info Status Atas -->
+                <div class="flex flex-col sm:flex-row justify-between items-center bg-indigo-50 p-4 rounded-2xl gap-3">
+                    <div class="flex items-center gap-2">
+                        <span class="bg-indigo-600 text-white font-fredoka px-4 py-1.5 rounded-full text-xs sm:text-sm font-bold shadow-md" id="current-question-num">Pertanyaan 1 / 30</span>
+                        <span class="bg-amber-100 text-amber-800 font-fredoka px-3 py-1.5 rounded-full text-xs sm:text-sm font-bold" id="bab-label">Bab 1</span>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="flex items-center gap-1 text-amber-500 font-bold">
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                            <span id="game-score">Skor: 0</span>
+                        </div>
+                        <div class="flex items-center gap-1 text-rose-500 font-bold">
+                            <i data-lucide="heart" class="w-5 h-5 fill-current" id="heart-icon"></i>
+                            <span id="game-lives">Salah: 0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="w-full bg-slate-200 h-3.5 rounded-full overflow-hidden">
+                    <div id="game-progress" class="bg-indigo-600 h-full transition-all duration-300" style="width: 3.33%"></div>
+                </div>
+
+                <!-- Area Pertanyaan -->
+                <div class="space-y-4">
+                    <div class="p-4 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-2xl border-2 border-indigo-100">
+                        <p class="text-base sm:text-lg font-bold text-slate-800 leading-relaxed" id="question-text">Memuat pertanyaan...</p>
+                    </div>
+
+                    <!-- Pilihan Jawaban -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3" id="options-container">
+                        <!-- Tombol-tombol pilihan akan ditaruh di sini secara dinamis -->
+                    </div>
+                </div>
+
+                <!-- Kotak Notifikasi Hasil Jawaban -->
+                <div id="feedback-box" class="hidden p-4 rounded-2xl text-center font-bold text-sm transition-all animate-bounce">
+                    Feedback
+                </div>
+
+                <!-- Tombol Navigasi Lanjut -->
+                <div class="flex justify-end">
+                    <button id="next-btn" onclick="nextQuestion()" class="hidden bg-emerald-500 hover:bg-emerald-600 text-white font-fredoka font-bold py-2.5 px-6 rounded-full shadow-md transition-all flex items-center gap-1">
+                        Pertanyaan Selanjutnya <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Layar Hasil Akhir (Selesai Kuis) -->
+            <div id="game-result-screen" class="hidden bg-white rounded-3xl p-6 sm:p-10 shadow-xl border-4 border-emerald-300 text-center max-w-2xl mx-auto space-y-6">
+                <div id="result-medal" class="text-7xl animate-pulse">🥇</div>
+                
+                <h2 class="text-3xl font-fredoka font-bold text-emerald-600" id="result-headline">Hebat Sekali! 🎉</h2>
+                <p class="text-sm sm:text-base text-slate-600 font-medium" id="result-message">
+                    Kamu telah menyelesaikan semua 30 soal tantangan PAI dengan cemerlang.
+                </p>
+
+                <!-- Statistik Nilai -->
+                <div class="grid grid-cols-3 gap-3">
+                    <div class="bg-indigo-50 p-3 rounded-2xl border border-indigo-100">
+                        <p class="text-xs text-slate-500 font-semibold">Benar</p>
+                        <p class="text-xl sm:text-2xl font-bold text-indigo-700" id="stat-correct">0</p>
+                    </div>
+                    <div class="bg-rose-50 p-3 rounded-2xl border border-rose-100">
+                        <p class="text-xs text-slate-500 font-semibold">Salah</p>
+                        <p class="text-xl sm:text-2xl font-bold text-rose-600" id="stat-wrong">0</p>
+                    </div>
+                    <div class="bg-amber-50 p-3 rounded-2xl border border-amber-100">
+                        <p class="text-xs text-slate-500 font-semibold">Skor Akhir</p>
+                        <p class="text-xl sm:text-2xl font-bold text-amber-600" id="stat-score">0</p>
+                    </div>
+                </div>
+
+                <!-- Kotak Rekomendasi/Saran Belajar -->
+                <div class="p-4 bg-emerald-50 rounded-2xl border border-emerald-100 text-xs sm:text-sm text-emerald-950 font-semibold text-left" id="saran-box">
+                    Saran belajar akan dimuat di sini...
+                </div>
+
+                <div class="flex flex-col sm:flex-row justify-center gap-3">
+                    <button onclick="startGame()" class="bubble-btn bg-indigo-600 hover:bg-indigo-700 text-white font-fredoka font-bold px-6 py-2.5 rounded-full shadow-md transition-all flex items-center justify-center gap-1">
+                        <i data-lucide="rotate-ccw" class="w-4 h-4"></i> Coba Lagi
+                    </button>
+                    <button onclick="switchTab('materi')" class="bubble-btn bg-emerald-500 hover:bg-emerald-600 text-white font-fredoka font-bold px-6 py-2.5 rounded-full shadow-md transition-all flex items-center justify-center gap-1">
+                        <i data-lucide="book-open" class="w-4 h-4"></i> Pelajari Materi Kembali
+                    </button>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer Ceria -->
+    <footer class="bg-slate-800 text-slate-300 py-6 mt-10 rounded-t-3xl text-center text-xs sm:text-sm border-t-4 border-yellow-400">
+        <div class="max-w-6xl mx-auto px-4 space-y-2">
+            <p class="font-fredoka text-amber-400 text-base font-bold">🌟 Mari Berlatih Setiap Hari untuk Dunia & Akhirat kita! 🌟</p>
+            <p class="font-medium text-slate-400">&copy; 2026 Aplikasi Petualangan PAI Kelas 4 SD. Dibuat oleh pak ahkam dengan cinta untuk masa depan gemilang.</p>
+        </div>
+    </footer>
+
+    <!-- JS LOGIC -->
+    <script>
+        // Data Pertanyaan Evaluasi PAI (Tepat 30 Pertanyaan Mewakili Bab 1-5 secara seimbang)
+        const allQuestions = [
+            // --- BAB 1: Hadis Salat Berjemaah (1-6) ---
+            {
+                bab: 1,
+                babTitle: "Bab 1: Hadis Salat Berjemaah",
+                question: "Salat yang dilakukan secara bersama-sama oleh dua orang atau lebih disebut salat...",
+                options: ["Munfarid", "Berjemaah", "Rawatib", "Duha"],
+                answer: 1
+            },
+            {
+                bab: 1,
+                babTitle: "Bab 1: Hadis Salat Berjemaah",
+                question: "Orang yang berdiri di depan memimpin salat berjemaah disebut...",
+                options: ["Makmum", "Muazin", "Imam", "Khatib"],
+                answer: 2
+            },
+            {
+                bab: 1,
+                babTitle: "Bab 1: Hadis Salat Berjemaah",
+                question: "Berapa derajat kelipatan pahala salat berjemaah dibandingkan salat sendirian?",
+                options: ["10 derajat", "17 derajat", "25 derajat", "27 derajat"],
+                answer: 3
+            },
+            {
+                bab: 1,
+                babTitle: "Bab 1: Hadis Salat Berjemaah",
+                question: "Siapakah yang posisinya berada di belakang imam dalam salat berjemaah?",
+                options: ["Makmum", "Muazin", "Bilal", "Khatib"],
+                answer: 0
+            },
+            {
+                bab: 1,
+                babTitle: "Bab 1: Hadis Salat Berjemaah",
+                question: "Sebelum memulai salat berjemaah, imam biasanya mengingatkan makmum untuk...",
+                options: ["Merapatkan dan meluruskan barisan (saf)", "Membaca doa qunut bersama", "Mengeraskan bacaan takbir", "Membuka alas kaki"],
+                answer: 0
+            },
+            {
+                bab: 1,
+                babTitle: "Bab 1: Hadis Salat Berjemaah",
+                question: "Jika imam melakukan kesalahan atau lupa gerakan dalam salat, makmum laki-laki mengingatkan dengan membaca...",
+                options: ["Alhamdulillah", "Allahu Akbar", "Subhanallah", "Astagfirullah"],
+                answer: 2
+            },
+
+            // --- BAB 2: Beriman Kepada Kitab-kitab Allah (7-12) ---
+            {
+                bab: 2,
+                babTitle: "Bab 2: Kitab Allah",
+                question: "Beriman kepada kitab-kitab Allah merupakan rukun iman yang ke-...",
+                options: ["Satu", "Dua", "Tiga", "Empat"],
+                answer: 2
+            },
+            {
+                bab: 2,
+                babTitle: "Bab 2: Kitab Allah",
+                question: "Kitab suci Taurat diturunkan Allah SWT kepada nabi utusan-Nya yaitu...",
+                options: ["Nabi Musa AS", "Nabi Dawud AS", "Nabi Isa AS", "Nabi Muhammad SAW"],
+                answer: 0
+            },
+            {
+                bab: 2,
+                babTitle: "Bab 2: Kitab Allah",
+                question: "Nabi Dawud AS menerima kitab suci dari Allah SWT yang bernama...",
+                options: ["Taurat", "Zabur", "Injil", "Al-Qur'an"],
+                answer: 1
+            },
+            {
+                bab: 2,
+                babTitle: "Bab 2: Kitab Allah",
+                question: "Kitab Injil diturunkan kepada Nabi Isa AS. Kitab ini menjadi petunjuk bagi kaum...",
+                options: ["Saba'", "Ad", "Bani Israil", "Quraisy"],
+                answer: 2
+            },
+            {
+                bab: 2,
+                babTitle: "Bab 2: Kitab Allah",
+                question: "Kitab suci penutup yang menyempurnakan kitab-kitab sebelumnya adalah...",
+                options: ["Taurat", "Zabur", "Injil", "Al-Qur'an"],
+                answer: 3
+            },
+            {
+                bab: 2,
+                babTitle: "Bab 2: Kitab Allah",
+                question: "Bagaimanakah cara kita mengamalkan iman kepada Al-Qur'an dalam kehidupan sehari-hari?",
+                options: ["Hanya menyimpannya di lemari yang tinggi", "Membaca, mempelajari artinya, dan mengamalkan isinya", "Menjadikannya hiasan dinding rumah", "Membacanya hanya saat ada ujian sekolah"],
+                answer: 1
+            },
+
+            // --- BAB 3: Kalimat Toyyibah (13-18) ---
+            {
+                bab: 3,
+                babTitle: "Bab 3: Kalimat Toyyibah",
+                question: "Apa arti dari kalimat Toyyibah 'Subhanallah'?",
+                options: ["Maha Suci Allah", "Segala Puji Bagi Allah", "Allah Maha Besar", "Atas Kehendak Allah"],
+                answer: 0
+            },
+            {
+                bab: 3,
+                babTitle: "Bab 3: Kalimat Toyyibah",
+                question: "Ketika melihat pemandangan alam yang sangat indah dan menakjubkan, kita dianjurkan mengucap...",
+                options: ["Subhanallah", "Masya Allah", "Insya Allah", "Allahu Akbar"],
+                answer: 1
+            },
+            {
+                bab: 3,
+                babTitle: "Bab 3: Kalimat Toyyibah",
+                question: "Kalimat 'Insya Allah' diucapkan ketika kita...",
+                options: ["Melihat musibah", "Mendengar berita duka", "Berjanji melakukan sesuatu di masa depan", "Selesai makan kenyang"],
+                answer: 2
+            },
+            {
+                bab: 3,
+                babTitle: "Bab 3: Kalimat Toyyibah",
+                question: "Saat mendengarkan takbir salat raya atau mengagumi kebesaran kekuasaan Allah SWT, kita mengucapkan...",
+                options: ["Subhanallah", "Masya Allah", "Insya Allah", "Allahu Akbar"],
+                answer: 3
+            },
+            {
+                bab: 3,
+                babTitle: "Bab 3: Kalimat Toyyibah",
+                question: "Zikir dengan mengucapkan kalimat-kalimat toyyibah dapat membuat hati kita menjadi...",
+                options: ["Gelisah", "Tenang dan tenteram", "Sombong", "Takut"],
+                answer: 1
+            },
+            {
+                bab: 3,
+                babTitle: "Bab 3: Kalimat Toyyibah",
+                question: "Bila kita tidak sengaja melihat hal buruk atau kesalahan di jalan, kalimat toyyibah apa yang tepat diucapkan?",
+                options: ["Subhanallah", "Masya Allah", "Allahu Akbar", "Insya Allah"],
+                answer: 0
+            },
+
+            // --- BAB 4: Salat Sunah Rawatib (19-24) ---
+            {
+                bab: 4,
+                babTitle: "Bab 4: Salat Rawatib",
+                question: "Salat sunah yang dikerjakan sebelum atau sesudah salat fardu disebut salat...",
+                options: ["Duha", "Tahajud", "Rawatib", "Tarawih"],
+                answer: 2
+            },
+            {
+                bab: 4,
+                babTitle: "Bab 4: Salat Rawatib",
+                question: "Salat sunah Rawatib yang dikerjakan SEBELUM salat fardu disebut salat...",
+                options: ["Ba'diyyah", "Qabliyyah", "Mu'akkad", "Ghairu Mu'akkad"],
+                answer: 1
+            },
+            {
+                bab: 4,
+                babTitle: "Bab 4: Salat Rawatib",
+                question: "Salat sunah Rawatib yang dikerjakan SESUDAH salat fardu disebut...",
+                options: ["Ba'diyyah", "Qabliyyah", "Munfarid", "Berjemaah"],
+                answer: 0
+            },
+            {
+                bab: 4,
+                babTitle: "Bab 4: Salat Rawatib",
+                question: "Manakah di bawah ini yang termasuk salat rawatib Mu'akkad (sangat dianjurkan)?",
+                options: ["2 Rakaat sebelum Subuh", "2 Rakaat sebelum Asar", "2 Rakaat sebelum Magrib", "2 Rakaat sebelum Isya"],
+                answer: 0
+            },
+            {
+                bab: 4,
+                babTitle: "Bab 4: Salat Rawatib",
+                question: "Salat sunah rawatib sebaiknya dikerjakan secara...",
+                options: ["Berjemaah ramai-ramai", "Munfarid (sendirian)", "Sambil berjalan", "Mengeraskan bacaan suratnya"],
+                answer: 1
+            },
+            {
+                bab: 4,
+                babTitle: "Bab 4: Salat Rawatib",
+                question: "Salah satu keutamaan salat sunah rawatib bagi muslim yang rajin mengamalkannya adalah...",
+                options: ["Diberi hadiah uang banyak di dunia", "Mendapat pujian tetangga", "Dibangunkan rumah di surga oleh Allah", "Bisa terbang ke awan"],
+                answer: 2
+            },
+
+            // --- BAB 5: Kisah Nabi Muhammad & Mukjizat (25-30) ---
+            {
+                bab: 5,
+                babTitle: "Bab 5: Kisah Rasul & Mukjizat",
+                question: "Pada usia berapakah Nabi Muhammad SAW diangkat Allah menjadi Rasul?",
+                options: ["25 Tahun", "35 Tahun", "40 Tahun", "63 Tahun"],
+                answer: 2
+            },
+            {
+                bab: 5,
+                babTitle: "Bab 5: Kisah Rasul & Mukjizat",
+                question: "Di manakah Nabi Muhammad pertama kali menerima wahyu (QS. Al-Alaq 1-5)?",
+                options: ["Gua Hira", "Gua Tsur", "Masjidil Haram", "Kota Madinah"],
+                answer: 0
+            },
+            {
+                bab: 5,
+                babTitle: "Bab 5: Kisah Rasul & Mukjizat",
+                question: "Mukjizat terbesar yang diturunkan kepada Nabi Muhammad SAW yang masih bisa kita baca sekarang adalah...",
+                options: ["Membelah bulan", "Al-Qur'an", "Air memancar dari jari tangan", "Kuda bersayap Buraq"],
+                answer: 1
+            },
+            {
+                bab: 5,
+                babTitle: "Bab 5: Kisah Rasul & Mukjizat",
+                question: "Perjalanan malam hari Nabi Muhammad dari Masjidil Haram ke Baitul Maqdis lalu naik ke Sidratul Muntaha disebut...",
+                options: ["Hijrah", "Isra Mikraj", "Fathul Makkah", "Nuzulul Qur'an"],
+                answer: 1
+            },
+            {
+                bab: 5,
+                babTitle: "Bab 5: Kisah Rasul & Mukjizat",
+                question: "Sifat utama Rasulullah 'Amanah' memiliki arti...",
+                options: ["Benar/Jujur", "Dapat Dipercaya", "Menyampaikan wahyu", "Cerdas"],
+                answer: 1
+            },
+            {
+                bab: 5,
+                babTitle: "Bab 5: Kisah Rasul & Mukjizat",
+                question: "Bagaimana cara kita membuktikan cinta kita kepada Rasulullah SAW?",
+                options: ["Membaca selawat dan meneladani akhlak mulia beliau", "Hanya menghafal nama-nama paman beliau", "Mengaku cinta tapi tidak pernah mau salat", "Merayakan ulang tahun dengan pesta mewah"],
+                answer: 0
+            }
+        ];
+
+        // State Aplikasi & Game
+        let currentTab = 'materi';
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let wrongAnswers = 0;
+        let hasAnswered = false;
+        let playQuestions = []; // Akan berisi questions yang diacak atau langsung diambil
+
+        // Sound Generator (Web Audio API - beep sederhana tanpa file luar)
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        function playSound(type) {
+            try {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+
+                if (type === 'correct') {
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(523.25, audioCtx.currentTime); // C5
+                    osc.frequency.setValueAtTime(659.25, audioCtx.currentTime + 0.1); // E5
+                    gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.3);
+                } else if (type === 'wrong') {
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(150, audioCtx.currentTime);
+                    gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.3);
+                } else if (type === 'win') {
+                    // Nada perayaan melodi pendek
+                    const notes = [261.63, 329.63, 392.00, 523.25]; // C4-E4-G4-C5
+                    notes.forEach((freq, idx) => {
+                        const o = audioCtx.createOscillator();
+                        const g = audioCtx.createGain();
+                        o.connect(g);
+                        g.connect(audioCtx.destination);
+                        o.frequency.setValueAtTime(freq, audioCtx.currentTime + idx * 0.15);
+                        g.gain.setValueAtTime(0.1, audioCtx.currentTime + idx * 0.15);
+                        o.start(audioCtx.currentTime + idx * 0.15);
+                        o.stop(audioCtx.currentTime + idx * 0.15 + 0.2);
+                    });
+                }
+            } catch (e) {
+                // Browser memblokir audio sebelum interaksi pertama
+            }
+        }
+
+        // Ganti Tab Utama (Belajar / Bermain)
+        function switchTab(tab) {
+            currentTab = tab;
+            const secMateri = document.getElementById('section-materi');
+            const secGame = document.getElementById('section-game');
+            const btnMateri = document.getElementById('btn-materi');
+            const btnGame = document.getElementById('btn-game');
+
+            if (tab === 'materi') {
+                secMateri.classList.remove('hidden');
+                secGame.classList.add('hidden');
+                btnMateri.className = "bg-white text-emerald-600 font-bold px-4 py-2 rounded-full shadow-md hover:bg-emerald-50 transition-all flex items-center gap-1 text-sm border-2 border-emerald-500";
+                btnGame.className = "bg-amber-500 text-white font-bold px-4 py-2 rounded-full shadow-md hover:bg-amber-600 transition-all flex items-center gap-1 text-sm border-2 border-amber-300";
+            } else {
+                secMateri.classList.add('hidden');
+                secGame.classList.remove('hidden');
+                btnMateri.className = "bg-emerald-500 text-white font-bold px-4 py-2 rounded-full shadow-md hover:bg-emerald-600 transition-all flex items-center gap-1 text-sm border-2 border-emerald-300";
+                btnGame.className = "bg-white text-amber-600 font-bold px-4 py-2 rounded-full shadow-md hover:bg-amber-50 transition-all flex items-center gap-1 text-sm border-2 border-amber-500";
+            }
+        }
+
+        // Tampilkan Materi Bab Tertentu
+        function showBab(babNum) {
+            // Sembunyikan semua isi bab
+            document.querySelectorAll('.bab-content').forEach(el => el.classList.add('hidden'));
+            // Tampilkan bab yang dipilih
+            document.getElementById(`bab-content-${babNum}`).classList.remove('hidden');
+
+            // Perbarui gaya tombol tab
+            document.querySelectorAll('.bab-tab-btn').forEach(btn => {
+                btn.className = btn.className.replace(/bg-\w+-\d+ text-white/g, ''); // Hapus status aktif lama
+                // Kembalikan ke warna pasif default masing-masing
+                if (btn.id === 'bab-tab-1') btn.className = "bab-tab-btn p-3 rounded-2xl font-fredoka font-bold text-xs sm:text-sm text-center shadow-md bg-rose-200 text-rose-800 hover:bg-rose-300 transition-all transform hover:-translate-y-1";
+                if (btn.id === 'bab-tab-2') btn.className = "bab-tab-btn p-3 rounded-2xl font-fredoka font-bold text-xs sm:text-sm text-center shadow-md bg-sky-200 text-sky-800 hover:bg-sky-300 transition-all transform hover:-translate-y-1";
+                if (btn.id === 'bab-tab-3') btn.className = "bab-tab-btn p-3 rounded-2xl font-fredoka font-bold text-xs sm:text-sm text-center shadow-md bg-emerald-200 text-emerald-800 hover:bg-emerald-300 transition-all transform hover:-translate-y-1";
+                if (btn.id === 'bab-tab-4') btn.className = "bab-tab-btn p-3 rounded-2xl font-fredoka font-bold text-xs sm:text-sm text-center shadow-md bg-amber-200 text-amber-800 hover:bg-amber-300 transition-all transform hover:-translate-y-1";
+                if (btn.id === 'bab-tab-5') btn.className = "bab-tab-btn col-span-2 md:col-span-1 p-3 rounded-2xl font-fredoka font-bold text-xs sm:text-sm text-center shadow-md bg-purple-200 text-purple-800 hover:bg-purple-300 transition-all transform hover:-translate-y-1";
+            });
+
+            // Warnai tab aktif secara kontras
+            const activeTab = document.getElementById(`bab-tab-${babNum}`);
+            if (babNum === 1) activeTab.className = "bab-tab-btn p-3 rounded-2xl font-fredoka font-bold text-xs sm:text-sm text-center shadow-md bg-rose-500 text-white transition-all transform hover:-translate-y-1";
+            if (babNum === 2) activeTab.className = "bab-tab-btn p-3 rounded-2xl font-fredoka font-bold text-xs sm:text-sm text-center shadow-md bg-sky-500 text-white transition-all transform hover:-translate-y-1";
+            if (babNum === 3) activeTab.className = "bab-tab-btn p-3 rounded-2xl font-fredoka font-bold text-xs sm:text-sm text-center shadow-md bg-emerald-500 text-white transition-all transform hover:-translate-y-1";
+            if (babNum === 4) activeTab.className = "bab-tab-btn p-3 rounded-2xl font-fredoka font-bold text-xs sm:text-sm text-center shadow-md bg-amber-500 text-white transition-all transform hover:-translate-y-1";
+            if (babNum === 5) activeTab.className = "bab-tab-btn col-span-2 md:col-span-1 p-3 rounded-2xl font-fredoka font-bold text-xs sm:text-sm text-center shadow-md bg-purple-500 text-white transition-all transform hover:-translate-y-1";
+        }
+
+        // === ENGINE GAME EVALUASI ===
+        function shuffle(array) {
+            // Helper pengocok pertanyaan biar seru setiap main ulang
+            let currentIndex = array.length, randomIndex;
+            while (currentIndex != 0) {
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex--;
+                [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+            }
+            return array;
+        }
+
+        function startGame() {
+            // Acak pertanyaan dari database kuis (Tepat 30 pertanyaan)
+            playQuestions = [...allQuestions];
+            // Acak pertanyaannya agar urutan tidak selalu sama saat diulang
+            shuffle(playQuestions);
+            
+            currentQuestionIndex = 0;
+            score = 0;
+            wrongAnswers = 0;
+            hasAnswered = false;
+
+            // Sembunyikan layar awal dan hasil, tampilkan layar bermain
+            document.getElementById('game-start-screen').classList.add('hidden');
+            document.getElementById('game-result-screen').classList.add('hidden');
+            document.getElementById('game-play-screen').classList.remove('hidden');
+
+            updateScoreboard();
+            showQuestion();
+        }
+
+        function updateScoreboard() {
+            document.getElementById('game-score').textContent = `Skor: ${score}`;
+            document.getElementById('game-lives').textContent = `Salah: ${wrongAnswers}`;
+            
+            // Perbarui Progress Bar
+            const progressPercent = ((currentQuestionIndex) / 30) * 100;
+            document.getElementById('game-progress').style.width = `${progressPercent}%`;
+            
+            // Update nomor di pojok kiri atas
+            document.getElementById('current-question-num').textContent = `Pertanyaan ${currentQuestionIndex + 1} / 30`;
+        }
+
+        function showQuestion() {
+            hasAnswered = false;
+            document.getElementById('feedback-box').classList.add('hidden');
+            document.getElementById('next-btn').classList.add('hidden');
+
+            const qData = playQuestions[currentQuestionIndex];
+            
+            // Set label bab & teks pertanyaan
+            document.getElementById('bab-label').textContent = qData.babTitle;
+            document.getElementById('question-text').textContent = qData.question;
+
+            // Warnai label bab sesuai nomor babnya
+            const label = document.getElementById('bab-label');
+            if(qData.bab === 1) label.className = "bg-rose-100 text-rose-800 font-fredoka px-3 py-1.5 rounded-full text-xs sm:text-sm font-bold border border-rose-300";
+            if(qData.bab === 2) label.className = "bg-sky-100 text-sky-800 font-fredoka px-3 py-1.5 rounded-full text-xs sm:text-sm font-bold border border-sky-300";
+            if(qData.bab === 3) label.className = "bg-emerald-100 text-emerald-800 font-fredoka px-3 py-1.5 rounded-full text-xs sm:text-sm font-bold border border-emerald-300";
+            if(qData.bab === 4) label.className = "bg-amber-100 text-amber-800 font-fredoka px-3 py-1.5 rounded-full text-xs sm:text-sm font-bold border border-amber-300";
+            if(qData.bab === 5) label.className = "bg-purple-100 text-purple-800 font-fredoka px-3 py-1.5 rounded-full text-xs sm:text-sm font-bold border border-purple-300";
+
+            // Render opsi jawaban
+            const optContainer = document.getElementById('options-container');
+            optContainer.innerHTML = '';
+
+            qData.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "bubble-btn w-full p-4 text-left font-semibold text-sm sm:text-base rounded-2xl bg-indigo-50 border-2 border-indigo-200 text-slate-700 hover:bg-indigo-100 transition-all flex items-center gap-3";
+                btn.innerHTML = `<span class="bg-indigo-200 text-indigo-800 w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">${String.fromCharCode(65 + idx)}</span> <span class="flex-grow">${opt}</span>`;
+                btn.onclick = () => selectOption(idx, btn);
+                optContainer.appendChild(btn);
+            });
+        }
+
+        function selectOption(selectedIdx, btnElement) {
+            if (hasAnswered) return; // Mencegah klik berulang kali
+            hasAnswered = true;
+
+            const qData = playQuestions[currentQuestionIndex];
+            const correctIdx = qData.answer;
+            const optButtons = document.getElementById('options-container').children;
+
+            // Nonaktifkan semua tombol pilihan
+            for (let i = 0; i < optButtons.length; i++) {
+                optButtons[i].classList.add('cursor-not-allowed', 'opacity-60');
+            }
+            btnElement.classList.remove('opacity-60');
+
+            const fbBox = document.getElementById('feedback-box');
+            fbBox.classList.remove('hidden');
+
+            if (selectedIdx === correctIdx) {
+                // JAWABAN BENAR
+                score += 10; // Tambah skor
+                btnElement.className = "w-full p-4 text-left font-semibold text-sm sm:text-base rounded-2xl bg-emerald-500 border-2 border-emerald-600 text-white transition-all flex items-center gap-3";
+                
+                fbBox.className = "p-4 rounded-2xl text-center font-fredoka font-bold text-sm bg-emerald-100 text-emerald-800 border-2 border-emerald-300 animate-bounce";
+                fbBox.innerHTML = "🌟 Hebat! Jawabanmu Benar! 🌟";
+                playSound('correct');
+            } else {
+                // JAWABAN SALAH
+                wrongAnswers += 1;
+                btnElement.className = "w-full p-4 text-left font-semibold text-sm sm:text-base rounded-2xl bg-rose-500 border-2 border-rose-600 text-white transition-all flex items-center gap-3";
+                
+                // Beri penanda pada jawaban yang benar
+                optButtons[correctIdx].classList.remove('opacity-60');
+                optButtons[correctIdx].className = "w-full p-4 text-left font-semibold text-sm sm:text-base rounded-2xl bg-emerald-500 border-2 border-emerald-600 text-white transition-all flex items-center gap-3";
+
+                fbBox.className = "p-4 rounded-2xl text-center font-fredoka font-bold text-sm bg-rose-100 text-rose-800 border-2 border-rose-300";
+                fbBox.innerHTML = "Oops! Kurang Tepat. Jawaban yang benar diberi warna hijau.";
+                playSound('wrong');
+            }
+
+            updateScoreboard();
+            document.getElementById('next-btn').classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < 30) {
+                showQuestion();
+                updateScoreboard();
+            } else {
+                endGame();
+            }
+        }
+
+        function endGame() {
+            document.getElementById('game-play-screen').classList.add('hidden');
+            document.getElementById('game-result-screen').classList.remove('hidden');
+
+            // Menghitung statistik akhir
+            const totalQuestions = 30;
+            const correctAnswers = totalQuestions - wrongAnswers;
+            
+            document.getElementById('stat-correct').textContent = correctAnswers;
+            document.getElementById('stat-wrong').textContent = wrongAnswers;
+            document.getElementById('stat-score').textContent = score;
+
+            const medalEl = document.getElementById('result-medal');
+            const headlineEl = document.getElementById('result-headline');
+            const msgEl = document.getElementById('result-message');
+            const saranEl = document.getElementById('saran-box');
+
+            if (score >= 250) { // Hanya salah maksimal 5 soal
+                medalEl.textContent = "🏆🥇";
+                headlineEl.textContent = "Luar Biasa, Mumtaz! 🌟";
+                headlineEl.className = "text-3xl font-fredoka font-bold text-emerald-600";
+                msgEl.textContent = "Kamu adalah Juara PAI Kelas 4! Semua materi Bab 1 sampai Bab 5 telah kamu kuasai dengan sangat mengagumkan!";
+                saranEl.textContent = "💡 Pertahankan prestasimu ya! Teruslah konsisten mengamalkan salat berjemaah di masjid, rajin tadarus Al-Qur'an, hiasi lisanmu dengan zikir kalimat toyyibah, dan laksanakan salat rawatib dengan gembira.";
+                playSound('win');
+            } else if (score >= 180) { // Salah antara 6-12 soal
+                medalEl.textContent = "🥈🥈";
+                headlineEl.textContent = "Keren Sekali, Jayyid! 👍";
+                headlineEl.className = "text-3xl font-fredoka font-bold text-sky-600";
+                msgEl.textContent = "Hasil yang sangat bagus! Pemahamanmu tentang materi PAI sudah cukup matang dan kuat.";
+                saranEl.textContent = "💡 Sedikit tips belajar: Coba baca kembali beberapa poin penting di Bab Salat Rawatib dan hafalkan hadis berjemaah beserta maknanya agar pemahamanmu sempurna menjadi 100%!";
+            } else { // Salah lebih dari 12 soal
+                medalEl.textContent = "🥉🥉";
+                headlineEl.textContent = "Ayo Semangat Belajar! 💪";
+                headlineEl.className = "text-3xl font-fredoka font-bold text-amber-600";
+                msgEl.textContent = "Kamu sudah berusaha dengan baik menyelesaikan semua 30 soal kuis ini!";
+                saranEl.textContent = "💡 Jangan berkecil hati ya! Silakan klik tombol 'Pelajari Materi Kembali' di bawah, mintalah bimbingan guru atau orang tuamu untuk membaca Bab yang kamu rasa paling sulit, lalu coba tantangan game ini lagi.";
+            }
+        }
+
+        // Jalankan inisialisasi icon di awal
+        window.onload = function() {
+            lucide.createIcons();
+            // Default tunjukkan Bab 1 di awal
+            showBab(1);
+        }
+    </script>
+</body>
+</html>
